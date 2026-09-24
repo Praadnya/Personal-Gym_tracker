@@ -1,6 +1,6 @@
 {
-  "name": "JIM — Her Gym Tracker",
-  "short_name": "JIM",
+  "name": "JAM — Her Gym Tracker",
+  "short_name": "JAM",
   "description": "A personal workout tracker for your gym routine.",
   "start_url": "./",
   "scope": "./",
