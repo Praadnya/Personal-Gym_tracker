@@ -1,12 +1,12 @@
-const CACHE_NAME = 'jam-shell-v3';
+const CACHE_NAME = 'jam-shell-v4';
 const APP_SHELL = [
   './',
   './index.html',
-  './manifest.json?v=3',
-  './icons/icon-192.png?v=3',
-  './icons/icon-512.png?v=3',
-  './icons/apple-touch-icon.png?v=3',
-  './icons/favicon-32.png?v=3'
+  './manifest.json?v=4',
+  './icons/icon-192.png?v=4',
+  './icons/icon-512.png?v=4',
+  './icons/apple-touch-icon.png?v=4',
+  './icons/favicon-32.png?v=4'
 ];
 
 self.addEventListener('install', event => {
@@ -35,11 +35,9 @@ self.addEventListener('fetch', event => {
   const isAppManifest = url.pathname.endsWith('/manifest.json');
   const isIcon = url.pathname.includes('/icons/');
 
-  // Always check the network first for the manifest and icons so an updated
-  // JAM name/logo can replace an older cached JIM identity.
   if (isAppManifest || isIcon) {
     event.respondWith(
-      fetch(request)
+      fetch(request, {cache: 'no-store'})
         .then(response => {
           if (response.ok) {
             const copy = response.clone();
